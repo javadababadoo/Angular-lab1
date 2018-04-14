@@ -62,7 +62,11 @@ export class ChatComponent implements OnInit {
     if (!this.loginService.userName) {
       this.showMessage('You must type your username');
     } else {
-      this.chatService.sendMessage('chatroom-general', this.message);
+      if (!this.message) {
+        this.showMessage('You must type your message');
+      } else {
+        this.chatService.sendMessage('chatroom-general', this.message);
+      }
       this.message = '';
     }
   }
