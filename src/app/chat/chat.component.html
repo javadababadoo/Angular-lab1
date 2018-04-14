@@ -1,14 +1,19 @@
-<form class="user-identity-form">
-  <mat-form-field class="user-identity-full-width">
-    <input matInput placeholder="Enter your username" [(ngModel)]="username" name="username">
+<form class="user-identity-form" *ngIf="hideUsername()">
+  <mat-form-field class="user-identity-full-width" >
+    <input matInput placeholder="Enter your username" [(ngModel)]="username" name="username" required>
   </mat-form-field>
-  <button mat-raised-button color="primary">Login</button>
+  <button mat-raised-button color="primary" (click)="loginUser()">Login</button>
+</form>
+
+<form class="user-identity-form" *ngIf="!hideUsername()">
+  <h2> Welcome {{getUsername()}} </h2>
 </form>
 
 <mat-list>
-  <mat-list-item *ngFor="let message of messageList$ | async">
-    <p matLine>
-      <span>  {{message.message}} </span>
+  <mat-list-item *ngFor="let messageData of messageList$ | async">
+    <p matLine id="rcorners" [ngClass]="getColor(messageData)" >
+      <span>  {{messageData.message}} </span>
+      <span>  {{messageData.userName}} </span>
     </p>
   </mat-list-item>
 </mat-list>
