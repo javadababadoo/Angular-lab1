@@ -13,7 +13,7 @@
   <mat-list-item *ngFor="let messageData of messageList$ | async">
     <p matLine id="rcorners" [ngClass]="getColor(messageData)" >
       <span>  {{messageData.message}} </span>
-      <span>  {{messageData.userName}} </span>
+      <span style="font-weight: bold">  -- {{messageData.userName}} </span>
     </p>
   </mat-list-item>
 </mat-list>
