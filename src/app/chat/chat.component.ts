@@ -16,6 +16,7 @@ export class ChatComponent implements OnInit {
   messageList$;
 
   constructor(private db: AngularFirestore) {
+    console.log('Test');
     this.messageList$ = db.collection('chatroom-general').valueChanges();
   }
 
